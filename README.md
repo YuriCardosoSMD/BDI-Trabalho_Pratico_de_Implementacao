@@ -1,6 +1,6 @@
 # BDI — Trabalho Prático de Implementação
 
-Desenvolver uma aplicação, de tema livre ☺, que manipule dados em um **Banco de Dados Relacional**.
+Desenvolver uma aplicação, de tema livre, que manipule dados em um **Banco de Dados Relacional**.
 
 ## Requisitos mínimos
 
