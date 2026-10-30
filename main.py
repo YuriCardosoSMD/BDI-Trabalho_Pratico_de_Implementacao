@@ -21,10 +21,7 @@ from consultas import (
 from atualizacoes import atualizar_medicamento, atualizar_estoque
 from remocoes import excluir_cliente, cancelar_venda
 
-
-# ---------------------------------------------------------------------
 # Ações do menu
-# ---------------------------------------------------------------------
 def acao_cadastrar_cliente(conn):
     inserir_cliente(conn, ler_texto("Nome do cliente: "))
 
@@ -49,7 +46,7 @@ def acao_registrar_venda(conn):
 
     mostrar_referencia(conn, "medicamento", "Medicamentos")
     print("\nItens da venda (Enter vazio no código do medicamento encerra).")
-    itens = {}  # id_medicamento -> [quantidade, preco]
+    itens = {}
     while True:
         id_med = ler_inteiro("Código do medicamento: ", opcional=True)
         if id_med is None:
@@ -59,7 +56,7 @@ def acao_registrar_venda(conn):
             print("Medicamento não encontrado.")
             continue
         quantidade = ler_inteiro("Quantidade: ")
-        if id_med in itens:  # a chave (venda, medicamento) não pode repetir
+        if id_med in itens:
             itens[id_med][0] += quantidade
         else:
             itens[id_med] = [quantidade, preco]
@@ -144,10 +141,7 @@ def acao_cancelar_venda(conn):
     else:
         print("Operação cancelada.")
 
-
-# ---------------------------------------------------------------------
 # Menu principal
-# ---------------------------------------------------------------------
 MENU = """
 ===== SISTEMA DA FARMÁCIA =====
  Cadastros

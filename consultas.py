@@ -7,7 +7,7 @@ def _consultar(conn, sql, params=None):
         with conn.cursor() as cursor:
             cursor.execute(sql, params)
             linhas = cursor.fetchall()
-        conn.commit()  # encerra a transação de leitura
+        conn.commit()
         return linhas
     except psycopg2.Error as e:
         conn.rollback()
@@ -80,10 +80,9 @@ def consultar_itens_venda(conn, id_venda):
     return _consultar(conn, sql, (id_venda,))
 
 
-# ---------------------------------------------------------------------
-# Apoio ao menu (listas de referência e preço vigente). Não fazem parte
-# das 5 consultas obrigatórias; servem para o usuário escolher os IDs.
-# ---------------------------------------------------------------------
+
+# Listas de referência e preço vigente.
+
 def buscar_preco_medicamento(conn, id_medicamento):
     """Preço vigente do medicamento, ou None se ele não existir."""
     linhas = _consultar(

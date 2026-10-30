@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 def conectar():
     return psycopg2.connect(
         dbname=os.getenv("DB_NAME", "sistema_farmacia"),

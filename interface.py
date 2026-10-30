@@ -3,9 +3,9 @@ from decimal import Decimal, InvalidOperation
 from consultas import listar_referencia
 
 
-# ---------------------------------------------------------------------
+
 # Leitura e validação de entradas
-# ---------------------------------------------------------------------
+
 def ler_texto(mensagem):
     """Lê um texto obrigatório (repete até não ser vazio)."""
     while True:
@@ -47,9 +47,9 @@ def ler_decimal(mensagem):
         return numero
 
 
-# ---------------------------------------------------------------------
+
 # Exibição e formatação
-# ---------------------------------------------------------------------
+
 def formatar(valor):
     if isinstance(valor, Decimal):
         return f"{valor:.2f}"

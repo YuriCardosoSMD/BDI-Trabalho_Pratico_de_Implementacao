@@ -16,7 +16,6 @@ def excluir_cliente(conn, id_cliente):
         print("Cliente excluído com sucesso.")
         return True
     except (errors.RestrictViolation, errors.ForeignKeyViolation):
-        # ON DELETE RESTRICT (fk_venda_cliente): cliente possui vendas
         conn.rollback()
         print("Não é possível excluir: o cliente possui vendas registradas.")
         return False
@@ -26,7 +25,7 @@ def excluir_cliente(conn, id_cliente):
         return False
 
 
-# D2 - Cancelar (excluir) uma venda; os itens saem por ON DELETE CASCADE
+# D2 - Excluir uma venda
 def cancelar_venda(conn, id_venda):
     sql = "DELETE FROM venda WHERE id_venda = %s;"
     try:

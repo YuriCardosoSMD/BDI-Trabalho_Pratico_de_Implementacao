@@ -16,7 +16,7 @@ def inserir_cliente(conn, nome):
         return False
 
 
-# I2 - Cadastrar medicamento (categoria e fabricante obrigatórios)
+# I2 - Cadastrar medicamento
 def inserir_medicamento(conn, descricao, preco, cod_categoria, cod_fabricante):
     sql = """
         INSERT INTO medicamento (descricao, preco, cod_categoria, cod_fabricante)
