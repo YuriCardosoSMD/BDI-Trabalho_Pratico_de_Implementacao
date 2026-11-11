@@ -21,18 +21,15 @@ BDI-Trabalho_Pratico_de_Implementacao/
 │   ├── MedicamentoDAO.py
 │   └── VendaDAO.py
 ├── database/             # Scripts de criação do banco de dados
-│   ├── criar_banco.sql
-│   └── criar_banco_com_dados.sql
-├── docs/                 # Documentação e Modelo Entidade-Relacionamento
-│   └── Trabalho_Pratico_de_Implementacao_BDI.pdf
+│   ├── sistema_farmacia.sql
+│   └── sistema_farmacia_com_dados.sql
 ├── entidades/            # Classes que representam as entidades
 │   ├── Cliente.py
 │   ├── Estoque.py
 │   ├── Medicamento.py
 │   └── Venda.py
 ├── InterfaceGrafica.py   # Menus da aplicação (arquivo principal)
-├── README.md
-└── requirements.txt
+└── README.md
 ```
 
 ## Banco de Dados
