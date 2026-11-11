@@ -8,16 +8,32 @@ Aplicação em Python (terminal) para **Controle de Vendas e Estoque de Farmáci
 - Thaíssa Victória Nunes Serafim
 - Yuri da Silva Cardoso
 
-## Organização do código
+## Estrutura do Projeto
 
 Segue o mesmo padrão do exemplo da disciplina (Entidade + DAO + Interface):
 
-| Arquivo | Função |
-|---|---|
-| `Conexao.py` | Conexão com o banco |
-| `Cliente.py`, `Medicamento.py`, `Estoque.py`, `Venda.py` | Classes das entidades |
-| `ClienteDAO.py`, `MedicamentoDAO.py`, `EstoqueDAO.py`, `VendaDAO.py` | Comandos SQL |
-| `InterfaceGrafica.py` | Menus da aplicação (arquivo principal) |
+```
+BDI-Trabalho_Pratico_de_Implementacao/
+├── dao/                  # Classes DAO, com os comandos SQL
+│   ├── Conexao.py
+│   ├── ClienteDAO.py
+│   ├── EstoqueDAO.py
+│   ├── MedicamentoDAO.py
+│   └── VendaDAO.py
+├── database/             # Scripts de criação do banco de dados
+│   ├── criar_banco.sql
+│   └── criar_banco_com_dados.sql
+├── docs/                 # Documentação e Modelo Entidade-Relacionamento
+│   └── Trabalho Prático de Implementação - BDI.pdf
+├── entidades/            # Classes que representam as entidades
+│   ├── Cliente.py
+│   ├── Estoque.py
+│   ├── Medicamento.py
+│   └── Venda.py
+├── InterfaceGrafica.py   # Menus da aplicação (arquivo principal)
+├── README.md
+└── requirements.txt
+```
 
 ## Banco de Dados
 
@@ -28,18 +44,22 @@ Segue o mesmo padrão do exemplo da disciplina (Entidade + DAO + Interface):
 | Chaves estrangeiras | 3 | **13** |
 | Colunas por tabela | 2 | **2 a 5** |
 
+O Modelo Entidade-Relacionamento completo está em [`docs/`](docs/).
+
 ## Operações SQL DML
+
+As operações abaixo seguem a numeração da seção 7 do documento do Modelo Entidade-Relacionamento.
 
 | Operação | Mínimo | Implementado |
 |---|---|---|
-| SELECT | 5 | **7** — listar clientes, buscar cliente, listar medicamentos, buscar medicamento, estoque da filial, listar vendas, itens da venda |
-| INSERT | 3 | **4** — cliente, medicamento, venda, item da venda |
-| UPDATE | 2 | **3** — cliente, medicamento, estoque |
-| DELETE | 2 | **3** — cliente, itens da venda, venda |
+| SELECT | 5 | **5** — S1 listar medicamentos, S2 consultar medicamentos por categoria e/ou fabricante, S3 estoque de uma filial, S4 listar vendas, S5 itens de uma venda |
+| INSERT | 3 | **3** — I1 cadastrar cliente, I2 cadastrar medicamento, I3 registrar venda com seus itens |
+| UPDATE | 2 | **2** — U1 atualizar medicamento, U2 atualizar quantidade em estoque |
+| DELETE | 2 | **2** — D1 excluir cliente sem vendas, D2 cancelar venda |
 
 ## Scripts do Banco de Dados
 
-Os dois scripts abaixo criam as mesmas 13 tabelas. Use **apenas um** deles. Atenção: ambos apagam as tabelas existentes antes de recriá-las.
+Os scripts também estão na pasta [`database/`](database/). Os dois criam as mesmas 13 tabelas. Use **apenas um** deles. Atenção: ambos apagam as tabelas existentes antes de recriá-las.
 
 <details>
 <summary><strong>Versão 1 — Banco de dados vazio (somente estrutura)</strong></summary>
@@ -485,13 +505,13 @@ INSERT INTO telefone_fabricante (cod_fabricante, ddd, numero) VALUES
    ```sql
    CREATE DATABASE sistema_farmacia;
    ```
-2. Conecte-se ao banco `sistema_farmacia` e execute um dos scripts acima (pelo pgAdmin, psql ou DBeaver).
+2. Conecte-se ao banco `sistema_farmacia` e execute um dos scripts da pasta `database/` (pelo pgAdmin, psql ou DBeaver).
 3. Instale a dependência:
    ```
    pip install psycopg2
    ```
-4. Abra `Conexao.py` e coloque a senha do seu PostgreSQL.
-5. Execute:
+4. Abra `dao/Conexao.py` e coloque a senha do seu PostgreSQL.
+5. Na pasta raiz do projeto, execute:
    ```
    python InterfaceGrafica.py
    ```
