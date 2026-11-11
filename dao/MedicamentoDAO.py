@@ -1,5 +1,5 @@
-from Conexao import conectar
-from Medicamento import Medicamento
+from dao.Conexao import conectar
+from entidades.Medicamento import Medicamento
 
 
 # Classe DAO da entidade medicamento
@@ -12,7 +12,8 @@ class MedicamentoDAO:
             with conectar() as connection:
                 with connection.cursor() as cursor:
                     cursor.execute(
-                        "SELECT m.id_medicamento, m.descricao, m.preco, c.descricao, f.razao_social "
+                        "SELECT m.id_medicamento, m.descricao, m.preco, "
+                        "       c.descricao AS categoria, f.razao_social AS fabricante "
                         "FROM medicamento m "
                         "JOIN categoria c ON c.cod_categoria = m.cod_categoria "
                         "JOIN fabricante f ON f.cod_fabricante = m.cod_fabricante "

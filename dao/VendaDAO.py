@@ -1,5 +1,5 @@
-from Conexao import conectar
-from Venda import Venda, ItemVenda
+from dao.Conexao import conectar
+from entidades.Venda import Venda, ItemVenda
 
 
 # Classe DAO da entidade venda
@@ -12,7 +12,8 @@ class VendaDAO:
             with conectar() as connection:
                 with connection.cursor() as cursor:
                     cursor.execute(
-                        "SELECT v.id_venda, v.data_hora, f.razao_social, c.nome, u.nome "
+                        "SELECT v.id_venda, v.data_hora, "
+                        "       f.razao_social AS filial, c.nome AS cliente, u.nome AS funcionario "
                         "FROM venda v "
                         "JOIN filial f ON f.cod_filial = v.cod_filial "
                         "JOIN cliente c ON c.id_cliente = v.id_cliente "
@@ -65,17 +66,17 @@ class VendaDAO:
                         )
                     return id_venda
         except Exception as erro:
-            print(f"Erro ao inserir venda: {erro}")
+            print(f"Erro ao registrar venda (nada foi gravado): {erro}")
         return None
 
-    # Remove uma venda (DELETE) - primeiro os itens, depois a venda
+    # Remove uma venda (DELETE)
+    # Os itens da venda são removidos automaticamente (ON DELETE CASCADE).
     def remover(self, id_venda):
         try:
             with conectar() as connection:
                 with connection.cursor() as cursor:
-                    cursor.execute("DELETE FROM item_venda WHERE id_venda = %s", (id_venda,))
                     cursor.execute("DELETE FROM venda WHERE id_venda = %s", (id_venda,))
                     return cursor.rowcount == 1
         except Exception as erro:
-            print(f"Erro ao remover venda: {erro}")
+            print(f"Erro ao cancelar venda: {erro}")
         return False

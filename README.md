@@ -24,7 +24,7 @@ BDI-Trabalho_Pratico_de_Implementacao/
 │   ├── criar_banco.sql
 │   └── criar_banco_com_dados.sql
 ├── docs/                 # Documentação e Modelo Entidade-Relacionamento
-│   └── Trabalho Prático de Implementação - BDI.pdf
+│   └── Trabalho_Pratico_de_Implementacao_BDI.pdf
 ├── entidades/            # Classes que representam as entidades
 │   ├── Cliente.py
 │   ├── Estoque.py
@@ -48,14 +48,12 @@ O Modelo Entidade-Relacionamento completo está em [`docs/`](docs/).
 
 ## Operações SQL DML
 
-As operações abaixo seguem a numeração da seção 7 do documento do Modelo Entidade-Relacionamento.
-
 | Operação | Mínimo | Implementado |
 |---|---|---|
-| SELECT | 5 | **5** — S1 listar medicamentos, S2 consultar medicamentos por categoria e/ou fabricante, S3 estoque de uma filial, S4 listar vendas, S5 itens de uma venda |
-| INSERT | 3 | **3** — I1 cadastrar cliente, I2 cadastrar medicamento, I3 registrar venda com seus itens |
-| UPDATE | 2 | **2** — U1 atualizar medicamento, U2 atualizar quantidade em estoque |
-| DELETE | 2 | **2** — D1 excluir cliente sem vendas, D2 cancelar venda |
+| SELECT | 5 | **7** — listar clientes, buscar cliente, listar medicamentos, buscar medicamento, estoque de uma filial, listar vendas, itens de uma venda |
+| INSERT | 3 | **4** — cliente, medicamento, venda, item da venda |
+| UPDATE | 2 | **3** — cliente, medicamento, estoque |
+| DELETE | 2 | **2** — cliente sem vendas, venda (com seus itens) |
 
 ## Scripts do Banco de Dados
 

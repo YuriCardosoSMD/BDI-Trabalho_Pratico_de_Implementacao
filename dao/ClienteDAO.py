@@ -1,5 +1,5 @@
-from Conexao import conectar
-from Cliente import Cliente
+from dao.Conexao import conectar
+from entidades.Cliente import Cliente
 
 
 # Classe DAO da entidade cliente
@@ -53,7 +53,9 @@ class ClienteDAO:
             print(f"Erro ao atualizar cliente: {erro}")
         return False
 
-    # Remove um cliente (DELETE) - falha se o cliente tiver vendas (chave estrangeira)
+    # Remove um cliente sem vendas (DELETE)
+    # Se o cliente tiver vendas, o banco bloqueia a exclusão (ON DELETE RESTRICT).
+    # Os telefones do cliente são removidos automaticamente (ON DELETE CASCADE).
     def remover(self, codigo):
         try:
             with conectar() as connection:
@@ -61,5 +63,5 @@ class ClienteDAO:
                     cursor.execute("DELETE FROM cliente WHERE id_cliente = %s", (codigo,))
                     return cursor.rowcount == 1
         except Exception as erro:
-            print(f"Erro ao remover cliente: {erro}")
+            print(f"Erro ao remover cliente (verifique se ele possui vendas): {erro}")
         return False

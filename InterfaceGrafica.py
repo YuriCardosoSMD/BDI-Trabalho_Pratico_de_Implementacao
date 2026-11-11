@@ -1,7 +1,7 @@
-from ClienteDAO import ClienteDAO
-from MedicamentoDAO import MedicamentoDAO
-from EstoqueDAO import EstoqueDAO
-from VendaDAO import VendaDAO
+from dao.ClienteDAO import ClienteDAO
+from dao.MedicamentoDAO import MedicamentoDAO
+from dao.EstoqueDAO import EstoqueDAO
+from dao.VendaDAO import VendaDAO
 
 
 # Classe que implementa a interface (terminal) da aplicação

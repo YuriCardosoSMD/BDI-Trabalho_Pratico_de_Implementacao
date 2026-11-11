@@ -1,5 +1,5 @@
-from Conexao import conectar
-from Estoque import Estoque
+from dao.Conexao import conectar
+from entidades.Estoque import Estoque
 
 
 # Classe DAO do estoque das filiais
