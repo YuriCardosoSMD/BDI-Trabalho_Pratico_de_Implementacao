@@ -28,6 +28,7 @@ BDI-Trabalho_Pratico_de_Implementacao/
 │   ├── Estoque.py
 │   ├── Medicamento.py
 │   └── Venda.py
+├── .gitignore
 ├── InterfaceGrafica.py   # Menus da aplicação (arquivo principal)
 └── README.md
 ```
