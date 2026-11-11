@@ -497,17 +497,37 @@ INSERT INTO telefone_fabricante (cod_fabricante, ddd, numero) VALUES
 
 ## Como executar
 
-1. No PostgreSQL, crie o banco de dados:
-   ```sql
-   CREATE DATABASE sistema_farmacia;
+### Ferramentas necessárias
+
+- **PostgreSQL**: servidor do banco de dados
+- **pgAdmin 4**: para criar o banco e executar os scripts
+- **Python 3**: para rodar a aplicação
+- **VS Code**: para abrir o projeto e executar o código
+
+### Parte 1 — Banco de dados (PostgreSQL + pgAdmin 4)
+
+1. Abra o **pgAdmin 4** e conecte-se ao servidor **PostgreSQL** com a senha definida na instalação.
+2. Crie o banco de dados:
+   - Clique com o botão direito em **Databases** › **Create** › **Database...**
+   - Em **Database**, digite `sistema_farmacia` e clique em **Save**.
+3. Selecione o banco `sistema_farmacia` e abra **Tools** › **Query Tool**.
+4. Na Query Tool, clique em **Open File**, escolha **um** dos scripts da pasta `database/` e execute com **F5**:
+   - `sistema_farmacia.sql`: apenas a estrutura (banco vazio)
+   - `sistema_farmacia_com_dados.sql`: estrutura com dados fictícios
+5. Para conferir, abra `sistema_farmacia` › **Schemas** › **public** › **Tables** e clique com o botão direito em **Refresh**. As 13 tabelas devem aparecer.
+
+### Parte 2 — Aplicação (Python + VS Code)
+
+1. Abra a pasta do projeto no **VS Code** (**File** › **Open Folder...**).
+2. Abra o terminal integrado (**Terminal** › **New Terminal**) e instale a dependência:
    ```
-2. Conecte-se ao banco `sistema_farmacia` e execute um dos scripts da pasta `database/` (pelo pgAdmin, psql ou DBeaver).
-3. Instale a dependência:
+   pip install psycopg2-binary
    ```
-   pip install psycopg2
+3. Abra `dao/Conexao.py` e substitua a senha pela do seu PostgreSQL:
+   ```python
+   password="sua_senha"
    ```
-4. Abra `dao/Conexao.py` e coloque a senha do seu PostgreSQL.
-5. Na pasta raiz do projeto, execute:
+4. No terminal, na pasta raiz do projeto, execute:
    ```
    python InterfaceGrafica.py
    ```
