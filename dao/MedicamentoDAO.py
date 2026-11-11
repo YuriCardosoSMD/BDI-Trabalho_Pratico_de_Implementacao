@@ -5,7 +5,7 @@ from entidades.Medicamento import Medicamento
 # Classe DAO da entidade medicamento
 class MedicamentoDAO:
 
-    # Lista todos os medicamentos com categoria e fabricante (SELECT com JOIN)
+    # Lista todos os medicamentos com categoria e fabricante
     def listar_todos(self):
         resultado = []
         try:

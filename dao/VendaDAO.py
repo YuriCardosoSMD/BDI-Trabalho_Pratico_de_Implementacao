@@ -5,7 +5,7 @@ from entidades.Venda import Venda, ItemVenda
 # Classe DAO da entidade venda
 class VendaDAO:
 
-    # Lista todas as vendas (SELECT com JOIN)
+    # Lista todas as vendas
     def listar_todas(self):
         resultado = []
         try:
@@ -26,7 +26,7 @@ class VendaDAO:
             print(f"Erro ao listar vendas: {erro}")
         return resultado
 
-    # Lista os itens de uma venda (SELECT com JOIN)
+    # Lista os itens de uma venda
     def listar_itens(self, id_venda):
         resultado = []
         try:
@@ -46,8 +46,6 @@ class VendaDAO:
         return resultado
 
     # Insere uma venda e seus itens (INSERT)
-    # itens = lista de tuplas (id_medicamento, quantidade, preco_unitario)
-    # Tudo fica na mesma transação: se um item falhar, nada é gravado.
     def inserir(self, cod_filial, id_cliente, id_funcionario, itens):
         try:
             with conectar() as connection:
@@ -70,7 +68,6 @@ class VendaDAO:
         return None
 
     # Remove uma venda (DELETE)
-    # Os itens da venda são removidos automaticamente (ON DELETE CASCADE).
     def remover(self, id_venda):
         try:
             with conectar() as connection:

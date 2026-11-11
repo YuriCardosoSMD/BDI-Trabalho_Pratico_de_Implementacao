@@ -4,7 +4,7 @@ from dao.EstoqueDAO import EstoqueDAO
 from dao.VendaDAO import VendaDAO
 
 
-# Classe que implementa a interface (terminal) da aplicação
+# Classe que implementa a interface da aplicação
 class InterfaceGrafica:
 
     def __init__(self):

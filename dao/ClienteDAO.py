@@ -54,8 +54,6 @@ class ClienteDAO:
         return False
 
     # Remove um cliente sem vendas (DELETE)
-    # Se o cliente tiver vendas, o banco bloqueia a exclusão (ON DELETE RESTRICT).
-    # Os telefones do cliente são removidos automaticamente (ON DELETE CASCADE).
     def remover(self, codigo):
         try:
             with conectar() as connection:
